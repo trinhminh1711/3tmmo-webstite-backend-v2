@@ -1,0 +1,235 @@
+nohup: ignoring input
+node:events:368
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1334:16)
+    at listenInCluster (node:net:1382:12)
+    at Server.listen (node:net:1469:7)
+    at Function.listen (/var/www/3tmmo/3tmmo_backend/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/var/www/3tmmo/3tmmo_backend/server.js:17:5)
+    at Module._compile (node:internal/modules/cjs/loader:1101:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1361:8)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3000
+}
+nohup: ignoring input
+node:events:368
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1334:16)
+    at listenInCluster (node:net:1382:12)
+    at Server.listen (node:net:1469:7)
+    at Function.listen (/var/www/3tmmo/3tmmo_backend/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/var/www/3tmmo/3tmmo_backend/server.js:17:5)
+    at Module._compile (node:internal/modules/cjs/loader:1101:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)
+    at Module.load (node:internal/modules/cjs/loader:981:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1361:8)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3000
+}
+nohup: ignoring input
+Server is running on port 3000.
+Successfully connected to the database.
+found customer:  RowDataPacket {
+  user_id: 1,
+  username: 'vietthangvqhp',
+  password: '4f3d1308ecca05cee1bc8cd7f0abd725',
+  name: 'Dương Việt Thắng',
+  birthday: null,
+  sex: null,
+  sub_district: null,
+  district: null,
+  city: null,
+  bank_account_name: null,
+  bank_account_number: null,
+  bank_name: null,
+  parent_id: null,
+  role: '0'
+}
+found customer:  RowDataPacket {
+  user_id: 1,
+  username: 'vietthangvqhp',
+  password: '4f3d1308ecca05cee1bc8cd7f0abd725',
+  name: 'Dương Việt Thắng',
+  birthday: null,
+  sex: null,
+  sub_district: null,
+  district: null,
+  city: null,
+  bank_account_name: null,
+  bank_account_number: null,
+  bank_name: null,
+  parent_id: null,
+  role: '0'
+}
+found customer:  RowDataPacket {
+  user_id: 1,
+  username: 'vietthangvqhp',
+  password: '4f3d1308ecca05cee1bc8cd7f0abd725',
+  name: 'Dương Việt Thắng',
+  birthday: null,
+  sex: null,
+  sub_district: null,
+  district: null,
+  city: null,
+  bank_account_name: null,
+  bank_account_number: null,
+  bank_name: null,
+  parent_id: null,
+  role: '0'
+}
+found customer:  RowDataPacket {
+  user_id: 1,
+  username: 'vietthangvqhp',
+  password: '4f3d1308ecca05cee1bc8cd7f0abd725',
+  name: 'Dương Việt Thắng',
+  birthday: null,
+  sex: null,
+  sub_district: null,
+  district: null,
+  city: null,
+  bank_account_name: null,
+  bank_account_number: null,
+  bank_name: null,
+  parent_id: null,
+  role: '0'
+}
+found customer:  RowDataPacket {
+  user_id: 1,
+  username: 'vietthangvqhp',
+  password: '4f3d1308ecca05cee1bc8cd7f0abd725',
+  name: 'Dương Việt Thắng',
+  birthday: null,
+  sex: null,
+  sub_district: null,
+  district: null,
+  city: null,
+  bank_account_name: null,
+  bank_account_number: null,
+  bank_name: null,
+  parent_id: null,
+  role: '0'
+}
+found customer:  RowDataPacket {
+  user_id: 1,
+  username: 'vietthangvqhp',
+  password: '4f3d1308ecca05cee1bc8cd7f0abd725',
+  name: 'Dương Việt Thắng',
+  birthday: null,
+  sex: null,
+  sub_district: null,
+  district: null,
+  city: null,
+  bank_account_name: null,
+  bank_account_number: null,
+  bank_name: null,
+  parent_id: null,
+  role: '0'
+}
+found customer:  RowDataPacket {
+  user_id: 1,
+  username: 'vietthangvqhp',
+  password: '4f3d1308ecca05cee1bc8cd7f0abd725',
+  name: 'Dương Việt Thắng',
+  birthday: null,
+  sex: null,
+  sub_district: null,
+  district: null,
+  city: null,
+  bank_account_name: null,
+  bank_account_number: null,
+  bank_name: null,
+  parent_id: null,
+  role: '0'
+}
+found customer:  RowDataPacket {
+  user_id: 1,
+  username: 'vietthangvqhp',
+  password: '4f3d1308ecca05cee1bc8cd7f0abd725',
+  name: 'Dương Việt Thắng',
+  birthday: null,
+  sex: null,
+  sub_district: null,
+  district: null,
+  city: null,
+  bank_account_name: null,
+  bank_account_number: null,
+  bank_name: null,
+  parent_id: null,
+  role: '0'
+}
+found customer:  RowDataPacket {
+  user_id: 1,
+  username: 'vietthangvqhp',
+  password: '4f3d1308ecca05cee1bc8cd7f0abd725',
+  name: 'Dương Việt Thắng',
+  birthday: null,
+  sex: null,
+  sub_district: null,
+  district: null,
+  city: null,
+  bank_account_name: null,
+  bank_account_number: null,
+  bank_name: null,
+  parent_id: null,
+  role: '0'
+}
+found customer:  RowDataPacket {
+  user_id: 1,
+  username: 'vietthangvqhp',
+  password: '4f3d1308ecca05cee1bc8cd7f0abd725',
+  name: 'Dương Việt Thắng',
+  birthday: null,
+  sex: null,
+  sub_district: null,
+  district: null,
+  city: null,
+  bank_account_name: null,
+  bank_account_number: null,
+  bank_name: null,
+  parent_id: null,
+  role: '0'
+}
+found customer:  RowDataPacket {
+  user_id: 1,
+  username: 'vietthangvqhp',
+  password: '4f3d1308ecca05cee1bc8cd7f0abd725',
+  name: 'Dương Việt Thắng',
+  birthday: null,
+  sex: null,
+  sub_district: null,
+  district: null,
+  city: null,
+  bank_account_name: null,
+  bank_account_number: null,
+  bank_name: null,
+  parent_id: null,
+  role: '0'
+}
+nohup: ignoring input
+Server is running on port 3000.
+Successfully connected to the database.
+nohup: ignoring input
+Server is running on port 3000.
+Successfully connected to the database.
