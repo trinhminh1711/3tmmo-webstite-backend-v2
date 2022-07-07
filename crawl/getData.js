@@ -11,7 +11,7 @@ async function crawlData(ApiKey) {
       Authorization: "Token " + ApiKey,
     },
     params: {
-      	since: isodate,
+      since: isodate,
     }
   });
   return res.data;
@@ -54,6 +54,23 @@ async function calculateCommission(name, commission) {
   });
 }
 
+function checkStatus(order_pending , order_reject , order_success) {
+  if(order_success == 1)
+  {
+    return 1
+  }
+  else 
+  {
+    if(order_reject == 1){
+      return 2
+    }
+    else if(order_pending == 1 )
+    {
+      return 0
+    }
+  }
+}
+
 function filterData(arr) {
   arr.forEach(async (order) => {
     const value = {};
@@ -67,10 +84,10 @@ function filterData(arr) {
       order.merchant,
       order.pub_commission
     );
-    value.order_status = order.products[0].status;
+    value.order_status = await checkStatus(order.order_pending , order.order_reject , order.order_success);
     value.confirmed_time = order.confirmed_time;
     value.click_time = order.click_time;
-    value.device = order.client_platform;
+    // value.device = order.client_platform;
     filterDataByTime(value);
   });
 }
@@ -82,7 +99,8 @@ async function filterDataByTime(dataOrders) {
 }
 async function getStart(ApiKey) {
   const dataRes = await crawlData(ApiKey);
-  var total_page = dataRes.total_page;
+  var total_page = Math.ceil((dataRes.total) / 30);
+  console.log(total_page);
   if (total_page > 1) {
     var getAll = [];
     for (let i = 1; i <= total_page; i = i + 2) {
