@@ -35,6 +35,18 @@ async function getOrdersOnePage(page, ApiKey) {
   });
   return res.data.data;
 }
+async function getOrderDetail(orderId,merchant , ApiKey) {
+  const res = await axios.get("https://api.accesstrade.vn/v1/order-products", {
+    headers: {
+      Authorization: "Token " + ApiKey,
+    },
+    params: {
+      order_id : orderId ,
+      merchant : merchant ,   
+    },
+  });
+  return (res.data.data[0]._extra.parameters.click_user_agent);
+}
 async function calculateCommission(name, commission) {
   return new Promise((resolve) => {
     sql.query(
@@ -75,7 +87,7 @@ function checkStatus(order_pending , order_reject , order_approved) {
   }
 }
 
-function filterData(arr) {
+function filterData(arr , ApiKey) {
   arr.forEach(async (order) => {
     const value = {};
     value.order_id = order.order_id;
@@ -91,6 +103,7 @@ function filterData(arr) {
     value.order_status = await checkStatus(order.order_pending , order.order_reject , order.order_approved);
     value.confirmed_time = order.confirmed_time;
     value.click_time = order.click_time;
+    value.user_agent = await getOrderDetail(order.order_id , order.merchant , ApiKey);
     // value.device = order.client_platform;
     filterDataByTime(value);
   });
@@ -112,11 +125,11 @@ async function getStart(ApiKey) {
       const page_next = await getOrdersOnePage(j, ApiKey);
       getAll = getAll.concat(page.concat(page_next));
     }
-    await filterData(getAll);
+    await filterData(getAll , ApiKey);
     console.log(getAll.length);
     console.log("done  " + ApiKey);
   } else {
-    await filterData(dataRes.data);
+    await filterData(dataRes.data , ApiKey);
     console.log(dataRes.data.length);
     console.log("done  " + ApiKey);
   }

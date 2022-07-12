@@ -35,6 +35,35 @@ exports.getOrderGroup = async (req, res) => {
   );
 };
 
+exports.getOrderAllGroupSucess = async (req, res) => {
+  await sql.query(
+    `SELECT COUNT(order_id) , merchant , SUM(reality_commission) FROM orders WHERE sales_time >= "${req.query.since}" AND sales_time < "${req.query.until}" AND order_status = "1" GROUP BY merchant;`,
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      } else {
+        res.send(results);
+      }
+    }
+  );
+};
+
+exports.getAllStatusMerchant = async (req, res) => {
+  await sql.query(
+    `SELECT COUNT(order_id) ,  SUM(reality_commission)  FROM orders
+    WHERE sales_time > "${req.query.since}" AND sales_time < "${req.query.until}"  
+    AND order_status = "${req.query.status}" AND merchant = "${req.query.merchant}";`,
+    function (error, results, fields) {
+      if (error) {
+        console.log(error);
+      } else {
+        res.send(results);
+      }
+    }
+  );
+};
+
+
 exports.getStatusMerchant = async (req, res) => {
   await sql.query(
     `SELECT COUNT(order_id) ,  SUM(reality_commission)  FROM orders

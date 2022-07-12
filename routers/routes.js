@@ -85,11 +85,15 @@ module.exports = (app) => {
 
   app.get("/order/group", auth, orders.getOrderGroup);
   
+  app.get("/order/all-group", auth, orders.getOrderAllGroupSucess);
+
   app.get("/income/user", auth, orders.getIncome);
 
   app.get("/income/time/user", auth, orders.getIncomeTime);
 
   app.get("/status/order" , auth , orders.getStatusMerchant)
+
+  app.get("/status/all-order" , auth , orders.getAllStatusMerchant)
   
   app.get("/rank/user", auth, orders.getRankIncome);
 
