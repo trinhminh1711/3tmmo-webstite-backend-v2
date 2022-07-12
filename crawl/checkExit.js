@@ -25,12 +25,12 @@ async function updateOrder(order) {
     function (error, results, fields) {
       if (error) {
         fs.appendFileSync(
-           "/home/rb005/H_dev/3tmmo_backend_v2/log/log/error.txt",
+           "/home/ubuntu/3tmmo/3tmmo_backend_v2/log/error.txt",
           error + "\n"
         );
       } else {
         fs.appendFileSync(
-          "/home/rb005/H_dev/3tmmo_backend_v2/log/update.txt",
+          "/home/ubuntu/3tmmo/3tmmo_backend_v2/log/update.txt",
           " update row recods" + order.order_id + "\n"
         );
       }
@@ -40,16 +40,16 @@ async function updateOrder(order) {
 
 async function insertOrder(order) {
   await sql.query(
-    `INSERT INTO orders (order_id ,  merchant, utm_source,  is_confirmed, pub_commission , reality_commission ,sales_time,order_status ,confirmed_time ,click_time  ,device) VALUES ("${order.order_id}" ,"${order.merchant}", "${order.utm_source}","${order.is_confirmed}","${order.pub_commission}", "${order.reality_commission}","${order.sales_time}","${order.order_status}","${order.confirmed_time}","${order.click_time}");`,
+    `INSERT INTO orders (order_id ,  merchant, utm_source,  is_confirmed, pub_commission , reality_commission ,sales_time,order_status ,confirmed_time ,click_time) VALUES ("${order.order_id}" ,"${order.merchant}", "${order.utm_source}","${order.is_confirmed}","${order.pub_commission}", "${order.reality_commission}","${order.sales_time}","${order.order_status}","${order.confirmed_time}","${order.click_time}");`,
     function (error, results, fields) {
       if (error) {
         fs.appendFileSync(
-          "/home/rb005/H_dev/3tmmo_backend_v2/log/error.txt",
+          "/home/ubuntu/3tmmo/3tmmo_backend_v2/log/error.txt",
           error + "\n"
         );
       } else {
         fs.appendFileSync(
-          "/home/rb005/H_dev/3tmmo_backend_v2/log/insert.txt",
+          "/home/ubuntu/3tmmo/3tmmo_backend_v2/log/insert.txt",
           " insert row recods" + "\n"
         );
       }

@@ -24,7 +24,7 @@ exports.addPartner = async (req, res) => {
             );
         }
     });
-
+    process.exit(1);
 }
 
 exports.updatePartner = async (req, res) => {
@@ -34,7 +34,7 @@ exports.updatePartner = async (req, res) => {
             res.send(results);
         }
     });
-
+    process.exit(1);
 }
 
 
@@ -53,5 +53,5 @@ exports.deletePartner = async (req, res) => {
             );
         }
     });
-
+    process.exit(1);
 }

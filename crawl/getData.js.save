@@ -9,15 +9,13 @@ date2.setHours(30, 59, 59, 999);
 var isodateSince = date.toISOString().split(".")[0];
 var isodateUntil = date2.toISOString().split(".")[0];
 async function crawlData(ApiKey) {
-  console.log(isodateSince);
-  console.log(isodateUntil)
   const res = await axios.get("https://api.accesstrade.vn/v1/order-list", {
     headers: {
       Authorization: "Token " + ApiKey,
     },
     params: {
       since : isodateSince ,
-      until : isodateUntil ,  
+      until : isodateUntil , 
     }
   });
   return res.data;
@@ -28,9 +26,8 @@ async function getOrdersOnePage(page, ApiKey) {
       Authorization: "Token " + ApiKey,
     },
     params: {
-      since : isodateSince ,
-      until : isodateUntil ,   
-      page: page,
+      since: isodate,
+    
     },
   });
   return res.data.data;
@@ -58,8 +55,8 @@ async function calculateCommission(name, commission) {
   });
 }
 
-function checkStatus(order_pending , order_reject , order_approved) {
-  if(order_approved == 1)
+function checkStatus(order_pending , order_reject , order_success) {
+  if(order_success == 1)
   {
     return 1
   }
@@ -88,7 +85,7 @@ function filterData(arr) {
       order.merchant,
       order.pub_commission
     );
-    value.order_status = await checkStatus(order.order_pending , order.order_reject , order.order_approved);
+    value.order_status = await checkStatus(order.order_pending , order.order_reject , order.order_success);
     value.confirmed_time = order.confirmed_time;
     value.click_time = order.click_time;
     // value.device = order.client_platform;
@@ -104,6 +101,7 @@ async function filterDataByTime(dataOrders) {
 async function getStart(ApiKey) {
   const dataRes = await crawlData(ApiKey);
   var total_page = Math.ceil((dataRes.total) / 30);
+  console.log(total_page);
   if (total_page > 1) {
     var getAll = [];
     for (let i = 1; i <= total_page; i = i + 2) {
