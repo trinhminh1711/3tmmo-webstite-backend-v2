@@ -140,3 +140,16 @@ exports.getRankIncomeTime = async (req, res) => {
     }
   );
 };
+
+
+exports.getDataOrderExport = async (req, res) => {
+  await sql.query(
+    `SELECT * FROM orders WHERE sales_time >= "${req.query.since}"  AND sales_time < "${req.query.until}" ORDER BY utm_source ASC;`,
+    function (error, results, fields) {
+      if (error) res.send(error);
+      else {
+        res.send(results);
+      }
+    }
+  );
+};

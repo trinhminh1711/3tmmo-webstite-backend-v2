@@ -19,7 +19,7 @@ exports.check = async function checkData(orderData) {
 
 async function updateOrder(order) {
   await sql.query(
-    `UPDATE orders SET merchant = "${order.merchant}", utm_source = "${order.utm_source}" , reality_commission = "${order.reality_commission}" ,is_confirmed = "${order.is_confirmed}" ,sales_time = "${order.sales_time}",order_status = "${order.order_status}",confirmed_time = "${order.confirmed_time}" ,click_time = "${order.click_time}" , user_agent = "${order.user_agent}"
+    `UPDATE orders SET merchant = "${order.merchant}", utm_source = "${order.utm_source}" , reality_commission = "${order.reality_commission}" ,is_confirmed = "${order.is_confirmed}" ,sales_time = "${order.sales_time}",order_status = "${order.order_status}",confirmed_time = "${order.confirmed_time}" ,click_time = "${order.click_time}" , device = "${order.device}" , user_agent = "${order.user_agent}"
     WHERE order_id = "${order.order_id}";
     ;`,
     function (error, results, fields) {
@@ -40,7 +40,7 @@ async function updateOrder(order) {
 
 async function insertOrder(order) {
   await sql.query(
-    `INSERT INTO orders (order_id ,  merchant, utm_source,  is_confirmed, pub_commission , reality_commission ,sales_time,order_status ,confirmed_time ,click_time , user_agent) VALUES ("${order.order_id}" ,"${order.merchant}", "${order.utm_source}","${order.is_confirmed}","${order.pub_commission}", "${order.reality_commission}","${order.sales_time}","${order.order_status}","${order.confirmed_time}","${order.click_time}" , "${order.user_agent}" );`,
+    `INSERT INTO orders (order_id ,  merchant, utm_source,  is_confirmed, pub_commission , reality_commission ,sales_time,order_status ,confirmed_time ,click_time , device, user_agent) VALUES ("${order.order_id}" ,"${order.merchant}", "${order.utm_source}","${order.is_confirmed}","${order.pub_commission}", "${order.reality_commission}","${order.sales_time}","${order.order_status}","${order.confirmed_time}","${order.click_time}"  , "${order.device}" , "${order.user_agent}" );`,
     function (error, results, fields) {
       if (error) {
         fs.appendFileSync(

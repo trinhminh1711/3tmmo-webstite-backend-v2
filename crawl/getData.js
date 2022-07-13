@@ -47,6 +47,20 @@ async function getOrderDetail(orderId,merchant , ApiKey) {
   });
   return (res.data.data[0]._extra.parameters.click_user_agent);
 }
+
+async function getOrderDevice(orderId,merchant , ApiKey) {
+  const res = await axios.get("https://api.accesstrade.vn/v1/order-products", {
+    headers: {
+      Authorization: "Token " + ApiKey,
+    },
+    params: {
+      order_id : orderId ,
+      merchant : merchant ,   
+    },
+  });
+  return (res.data.data[0]._extra.device_type);
+}
+
 async function calculateCommission(name, commission) {
   return new Promise((resolve) => {
     sql.query(
@@ -104,7 +118,7 @@ function filterData(arr , ApiKey) {
     value.confirmed_time = order.confirmed_time;
     value.click_time = order.click_time;
     value.user_agent = await getOrderDetail(order.order_id , order.merchant , ApiKey);
-    // value.device = order.client_platform;
+    value.device = await getOrderDevice(order.order_id , order.merchant , ApiKey);
     filterDataByTime(value);
   });
 }

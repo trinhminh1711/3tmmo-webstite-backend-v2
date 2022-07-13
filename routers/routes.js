@@ -87,6 +87,8 @@ module.exports = (app) => {
   
   app.get("/order/all-merchant", auth, orders.getOrderAllGroupMerchant);
 
+  app.get("/order/export", auth, orders.getDataOrderExport);
+
   app.get("/order/all-group", auth, orders.getOrderAllGroupStatus);
 
   app.get("/income/user", auth, orders.getIncome);
