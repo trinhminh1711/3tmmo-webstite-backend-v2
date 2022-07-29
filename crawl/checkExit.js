@@ -25,12 +25,12 @@ async function updateOrder(order) {
     function (error, results, fields) {
       if (error) {
         fs.appendFileSync(
-           "/home/rb005/H_dev/3tmmo-webstite-backend-v2/log/error.txt",
+           "/home/ubuntu/3tmmo/3tmmo_backend_v2/log/error.txt",
           error + "\n"
         );
       } else {
         fs.appendFileSync(
-          "/home/rb005/H_dev/3tmmo-webstite-backend-v2/log/update.txt",
+          "/home/ubuntu/3tmmo/3tmmo_backend_v2/log/update.txt",
           " update row recods" + order.order_id + "\n"
         );
       }
@@ -44,12 +44,12 @@ async function insertOrder(order) {
     function (error, results, fields) {
       if (error) {
         fs.appendFileSync(
-          "/home/rb005/H_dev/3tmmo-webstite-backend-v2/log/error.txt",
+          "/home/ubuntu/3tmmo/3tmmo_backend_v2/log/error.txt",
           error + "\n"
         );
       } else {
         fs.appendFileSync(
-          "/home/rb005/H_dev/3tmmo-webstite-backend-v2/log/insert.txt",
+          "/home/ubuntu/3tmmo/3tmmo_backend_v2/log/insert.txt",
           " insert row recods" + "\n"
         );
       }

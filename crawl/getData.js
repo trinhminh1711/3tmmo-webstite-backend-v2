@@ -1,5 +1,7 @@
-
 const axios = require("axios");
+const https = require("https");
+axios.defaults.timeout = 300000;
+axios.defaults.httpsAgent = new https.Agent({ keepAlive: true });
 const checkExit = require("./checkExit.js");
 const sql = require("../model/db");
 var date = new Date();
@@ -16,8 +18,9 @@ async function crawlData(ApiKey) {
       Authorization: "Token " + ApiKey,
     },
     params: {
+      until : isodateUntil,
       since : isodateSince ,
-      until : isodateUntil ,  
+      limit: 300
     }
   });
   return res.data;
@@ -28,9 +31,10 @@ async function getOrdersOnePage(page, ApiKey) {
       Authorization: "Token " + ApiKey,
     },
     params: {
-      since : isodateSince ,
-      until : isodateUntil ,   
+      until : isodateUntil,
+      since : isodateSince,    
       page: page,
+      limit : 300
     },
   });
   return res.data.data;
@@ -130,7 +134,7 @@ async function filterDataByTime(dataOrders) {
 }
 async function getStart(ApiKey) {
   const dataRes = await crawlData(ApiKey);
-  var total_page = Math.ceil((dataRes.total) / 30);
+ var total_page = Math.ceil((dataRes.total) / 300);
   if (total_page > 1) {
     var getAll = [];
     for (let i = 1; i <= total_page; i = i + 2) {
@@ -139,13 +143,13 @@ async function getStart(ApiKey) {
       const page_next = await getOrdersOnePage(j, ApiKey);
       getAll = getAll.concat(page.concat(page_next));
     }
-    await filterData(getAll , ApiKey);
     console.log(getAll.length);
-    console.log("done  " + ApiKey);
+    await filterData(getAll , ApiKey);
+    console.log("done multil  page  " + ApiKey);
   } else {
-    await filterData(dataRes.data , ApiKey);
     console.log(dataRes.data.length);
-    console.log("done  " + ApiKey);
+   await filterData(dataRes.data , ApiKey);
+    console.log("done  1 page  " + ApiKey);
   }
 }
 
