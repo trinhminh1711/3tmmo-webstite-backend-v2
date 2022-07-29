@@ -1,0 +1,3 @@
+ALTER TABLE partners DROP INDEX name
+
+SELECT * FROM `partners` WHERE name = "senmovn" ORDER BY parent_id DESC LIMIT 1;

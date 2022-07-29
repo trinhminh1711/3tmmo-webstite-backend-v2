@@ -10,7 +10,7 @@ exports.getPartners = async (req, res) => {
 }
 
 exports.addPartner = async (req, res) => {
-    await sql.query(`INSERT INTO partners (name, link, unit_price,  sign , percentage) VALUES ("${req.body.data.name}","${req.body.data.link}", ${req.body.data.unit_price},"${req.body.data.sign}","${req.body.data.percentage}");`, function (error, results, fields) {
+    await sql.query(`INSERT INTO partners (name , name_public, link, unit_price,  sign , percentage) VALUES ("${req.body.data.name}", "${req.body.data.name_public}", "${req.body.data.link}", ${req.body.data.unit_price},"${req.body.data.sign}","${req.body.data.percentage}");`, function (error, results, fields) {
         if (error) res.send({
             add: false,
             message: error
@@ -28,7 +28,7 @@ exports.addPartner = async (req, res) => {
 }
 
 exports.updatePartner = async (req, res) => {
-    await sql.query(`UPDATE partners SET link = "${req.body.link}", percentage = "${req.body.percentage}" , unit_price= "${req.body.unit_price}" , sign = "${req.body.sign}" WHERE name = "${req.body.name}";`, function (error, results, fields) {
+    await sql.query(`UPDATE partners SET name = "${req.body.name}", name_public = "${req.body.name_public}", link = "${req.body.link}", percentage = "${req.body.percentage}" , unit_price= "${req.body.unit_price}" , sign = "${req.body.sign}" WHERE name = "${req.body.name}";`, function (error, results, fields) {
         if (error) res.send(error);
         else {
             res.send(results);
@@ -39,7 +39,7 @@ exports.updatePartner = async (req, res) => {
 
 
 exports.deletePartner = async (req, res) => {
-    await sql.query(`DELETE FROM partners WHERE name="${req.body.name}";`, function (error, results, fields) {
+    await sql.query(`DELETE FROM partners WHERE parent_id="${req.body.partner_id}";`, function (error, results, fields) {
         if (error) res.send({
             delete: false,
             message: error

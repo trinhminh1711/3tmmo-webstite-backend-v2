@@ -68,7 +68,7 @@ async function getOrderDevice(orderId,merchant , ApiKey) {
 async function calculateCommission(name, commission) {
   return new Promise((resolve) => {
     sql.query(
-      `SELECT percentage , unit_price  FROM partners WHERE name = "${name}"`,
+      `SELECT percentage , unit_price  FROM partners WHERE name = "${name}" ORDER BY parent_id DESC LIMIT 1`,
       async function (error, results, fields) {
         if (error) {
           console.log(error);
