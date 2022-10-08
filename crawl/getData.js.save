@@ -5,7 +5,6 @@ axios.defaults.httpsAgent = new https.Agent({ keepAlive: true });
 const checkExit = require("./checkExit.js");
 const sql = require("../model/db");
 var date = new Date();
-//date.setDate(date.getDate() - 1);
 date.setHours(7, 0, 0, 0);
 var date2 = new Date();
 date2.setHours(30, 59, 59, 999);
@@ -19,7 +18,7 @@ async function crawlData(ApiKey) {
       Authorization: "Token " + ApiKey,
     },
     params: {
-      since : isodateSince,
+      since : 2022-08-04T00:00:00Z,
       until : isodateUntil,
       limit: 300
     }
@@ -32,7 +31,7 @@ async function getOrdersOnePage(page, ApiKey) {
       Authorization: "Token " + ApiKey,
     },
     params: {
-      since : isodateSince,
+      since : isondateSince,
       until : isodateUntil ,
       page: page,
       limit : 300

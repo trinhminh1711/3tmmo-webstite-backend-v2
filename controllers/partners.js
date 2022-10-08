@@ -22,13 +22,13 @@ exports.addPartner = async (req, res) => {
                     data: results
                 }
             );
+          process.exit(1);
         }
     });
-    process.exit(1);
 }
 
 exports.updatePartner = async (req, res) => {
-    await sql.query(`UPDATE partners SET name = "${req.body.name}", name_public = "${req.body.name_public}", link = "${req.body.link}", percentage = "${req.body.percentage}" , unit_price= "${req.body.unit_price}" , sign = "${req.body.sign}" WHERE name = "${req.body.name}";`, function (error, results, fields) {
+    await sql.query(`UPDATE partners SET name = "${req.body.name}", name_public = "${req.body.name_public}", link = "${req.body.link}", percentage = "${req.body.percentage}" , unit_price= "${req.body.unit_price}" , sign = "${req.body.sign}" WHERE parent_id = "${req.body.partner_id}";`, function (error, results, fields) {
         if (error) res.send(error);
         else {
             res.send(results);

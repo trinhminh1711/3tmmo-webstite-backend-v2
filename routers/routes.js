@@ -41,9 +41,9 @@ module.exports = (app) => {
       app.get(
         "/redirect/" + arr[i].parent_id + "/user:id",
         rateLimit({
-          windowMs: 60 * 120 * 1000,
+          windowMs: 60 * 240 * 1000,
           max: 1,
-          message: "Trùng IP ! Thử lại sau 2h",
+          message: "Trùng IP ! Thử lại sau 4h",
         }),
         (req, res) => {
           var replaceWith = "user" + req.params.id;
