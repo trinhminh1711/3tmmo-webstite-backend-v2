@@ -37,7 +37,7 @@ exports.getOrderGroup = async (req, res) => {
 
 exports.getOrderAllGroupMerchant = async (req, res) => {
   await sql.query(
-    `SELECT merchant FROM orders WHERE sales_time >= "${req.query.since}" AND sales_time < "${req.query.until}" GROUP BY merchant`,
+    `SELECT merchant FROM orders WHERE sales_time >= "${req.query.since}" AND sales_time <= "${req.query.until}" GROUP BY merchant`,
     function (error, results, fields) {
       if (error) {
         console.log(error);
@@ -95,7 +95,7 @@ exports.getStatusMerchant = async (req, res) => {
 
 exports.getIncome = async (req, res) => {
   await sql.query(
-    `SELECT SUM(pub_commission) , SUM(reality_commission) FROM orders WHERE utm_source = "${req.query.idUser}" and sales_time >= "${req.query.since}" and order_status = "1"`,
+    `SELECT SUM(pub_commission) , SUM(reality_commission) FROM orders WHERE utm_source = "${req.query.idUser}" and sales_time >= "${req.query.since}" and sales_time <= "${req.query.until}" and order_status = "1"`,
     function (error, results, fields) {
       if (error) res.send(error);
       else {
@@ -119,7 +119,7 @@ exports.getIncomeTime = async (req, res) => {
 
 exports.getRankIncome = async (req, res) => {
   await sql.query(
-    `SELECT utm_source, SUM(pub_commission) , SUM(reality_commission) FROM orders WHERE sales_time >= "${req.query.since}" and order_status = "1" GROUP BY utm_source ORDER BY SUM(pub_commission) DESC`,
+    `SELECT utm_source, SUM(pub_commission) , SUM(reality_commission) FROM orders WHERE sales_time >= "${req.query.since}" and sales_time <= "${req.query.until}" and order_status = "1" GROUP BY utm_source ORDER BY SUM(reality_commission) DESC`,
     function (error, results, fields) {
       if (error) res.send(error);
       else {

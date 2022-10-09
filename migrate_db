@@ -1,3 +1,9 @@
-ALTER TABLE partners DROP INDEX name
+-- ALTER TABLE partners DROP INDEX name
 
-SELECT * FROM `partners` WHERE name = "senmovn" ORDER BY parent_id DESC LIMIT 1;
+-- SELECT * FROM `partners` WHERE name = "senmovn" ORDER BY parent_id DESC LIMIT 1;
+
+/* update parent_id 
+UPDATE users SET parent_id = 'user0152' WHERE user_id = 227*/
+
+/* update parent_id 
+UPDATE users SET parent_id = 'user0182' WHERE user_id = 161 */
